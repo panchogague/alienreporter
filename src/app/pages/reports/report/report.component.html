@@ -1,0 +1,51 @@
+<div *ngIf="report">
+<h2>
+  Report: <b>{{title}}</b>
+</h2>
+
+<div class="card animated fadeIn fast" >
+  <div class="card-body">
+    <h6 class="card-title">Last Changed Date: <b>{{report.lastChangedDate | date: 'dd/MM/yyyy hh:mm:ss'}}</b></h6>
+    <h6 class="card-title">Last Changed By: <b>{{report.lastChangedBy}}</b></h6>
+  
+    <a  class="btn btn-primary" routerLink="/reports" title="Back to Reports">Back to Reports</a>
+    
+    <br> <br>
+    
+    <div class="alert alert-info" role="alert">
+       Drag and drop to reorder items 
+      </div>
+     
+  </div>
+</div>
+<br>
+<div class="card animated fadeIn fast" >
+    <div class="card-header">
+        Form
+      </div>
+    <div class="card-body">
+        <table class="table table-hover" >
+            <thead>
+            <tr>
+              
+              <th scope="col">#</th>
+              <th scope="col">Caption</th>
+              <th scope="col">Type</th>
+              <th width="3%"></th>
+            </tr>
+          </thead>
+          <tbody dnd-sortable-container [sortableData]="report.form">
+            <tr *ngFor="let item of report.form;let i = index" dnd-sortable [sortableIndex]="i">
+             
+              <th scope="row">{{item.id}}</th>
+              <td>{{item.caption}}</td>
+              <td>{{item.type}} </td>
+              <td><i class="fas fa-ellipsis-v"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
+
+
+</div>

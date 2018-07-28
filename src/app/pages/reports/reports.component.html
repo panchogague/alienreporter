@@ -1,0 +1,58 @@
+<div *ngIf="reporter">
+<h2>
+  Sightings Reports
+</h2>
+
+<div class="card animated fadeIn fast" >
+  <div class="card-body">
+    <h5 class="card-title">Search Reports</h5>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputUser">User</label>
+          <input type="text" class="form-control" id="inputUser" placeholder="User ID">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputLastChanged">Last changed date</label>
+          <input type="date" class="form-control" id="inputLastChanged" placeholder="Changed Date">
+        </div>
+      </div>
+     
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+</div>
+
+<br>
+<div class="card animated fadeIn fast" >
+    <div class="card-header">
+        Reports
+      </div>
+  <div class="card-body">
+    
+    <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Form ID</th>
+          <th>Last Changed By</th>
+          <th>Last Changed Date</th>
+          <th width="10%">Acctions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr> <!--in this part would be a list of reports-->
+          <th>{{reporter.userId}}</th>
+          <td>{{reporter.formId}}</td>
+          <td>{{reporter.lastChangedBy}}</td>
+          <td>{{reporter.lastChangedDate | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+          <td> <button  class="btn btn-success" title="Detail" [routerLink]="['/report',reporter.formId]">
+            <i class="fa fa-info-circle"></i> Detail
+          </button></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
